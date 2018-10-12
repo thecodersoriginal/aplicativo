@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Miau</string>
+    <string name="login">Login</string>
+    <string name="senha">Senha</string>
+    <string name="salvarSenha">Salvar Senha</string>
+    <string name="entrar">Entrar</string>
+    <string name="recuperarSenha">Esqueceu sua senha? Clique Aqui</string>
+    <string name="agenda">Agenda</string>
+</resources>
