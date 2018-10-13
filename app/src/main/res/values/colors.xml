@@ -5,4 +5,5 @@
     <color name="colorAccent">#1c6ced</color>
     <color name="colorGood">#3ec151</color>
     <color name="colorBad">#d62c2c</color>
+    <color name="colorAlert">#ff7607</color>
 </resources>

@@ -10,4 +10,7 @@
     <string name="saida">Saida</string>
     <string name="alerta">Alerta</string>
     <string name="tarefa">Tarefa</string>
+    <string name="estoque">Estoque</string>
+    <string name="equipamento">Equipamento</string>
+    <string name="material">Material</string>
 </resources>
