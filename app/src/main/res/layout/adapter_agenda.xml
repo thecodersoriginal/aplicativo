@@ -25,7 +25,7 @@
         tools:text="Limpeza da piscina" />
 
     <CheckBox
-        android:id="@+id/realizada_textview"
+        android:id="@+id/realizada_checkbox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"

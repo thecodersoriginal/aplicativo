@@ -25,4 +25,6 @@
     <string name="iniciadoem">Iniciado em</string>
     <string name="finalizadoem">Finalizado em</string>
     <string name="movimentar">Movimentar Estoque</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="qtde">Qtde</string>
 </resources>
