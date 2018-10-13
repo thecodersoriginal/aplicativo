@@ -39,6 +39,11 @@ public class Login extends AppCompatActivity
             loginEditText.setError("Login deve ser preenchido");
             ok = false;
         }
+        else if (senhaEditText.getText().toString().isEmpty())
+        {
+            senhaEditText.setError("Senha deve ser preenchida");
+            ok = false;
+        }
         return ok;
     }
 }
