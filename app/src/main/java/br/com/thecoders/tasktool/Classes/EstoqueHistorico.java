@@ -9,6 +9,15 @@ public class EstoqueHistorico {
     private Material material;
     private Servico servico;
 
+    public EstoqueHistorico(int id, int quantidade, char tipo, Usuario responsavel, Material material, Servico servico) {
+        this.id = id;
+        this.quantidade = quantidade;
+        this.tipo = tipo;
+        this.responsavel = responsavel;
+        this.material = material;
+        this.servico = servico;
+    }
+
     public int getId() {
         return id;
     }

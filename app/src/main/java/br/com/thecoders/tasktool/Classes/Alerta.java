@@ -10,6 +10,14 @@ public class Alerta
     private Usuario destino;
     private DateTime visualizadoEm;
 
+    public Alerta(int id, String mensagem, Usuario origem, Usuario destino, DateTime visualizadoEm) {
+        this.id = id;
+        this.mensagem = mensagem;
+        this.origem = origem;
+        this.destino = destino;
+        this.visualizadoEm = visualizadoEm;
+    }
+
     public int getId() {
         return id;
     }

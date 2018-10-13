@@ -6,6 +6,12 @@ public class ServicoMaterial {
     private Material material;
     private int quantidade;
 
+    public ServicoMaterial(Servico servico, Material material, int quantidade) {
+        this.servico = servico;
+        this.material = material;
+        this.quantidade = quantidade;
+    }
+
     public Servico getServico() {
         return servico;
     }

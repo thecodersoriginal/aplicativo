@@ -5,6 +5,11 @@ public class ServicoEquipamento {
     private Servico servico;
     private Equipamento equipamento;
 
+    public ServicoEquipamento(Servico servico, Equipamento equipamento) {
+        this.servico = servico;
+        this.equipamento = equipamento;
+    }
+
     public Servico getServico() {
         return servico;
     }

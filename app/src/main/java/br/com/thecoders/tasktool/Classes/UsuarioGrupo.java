@@ -5,6 +5,11 @@ public class UsuarioGrupo {
     private Usuario usuario;
     private Grupo grupo;
 
+    public UsuarioGrupo(Usuario usuario, Grupo grupo) {
+        this.usuario = usuario;
+        this.grupo = grupo;
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }

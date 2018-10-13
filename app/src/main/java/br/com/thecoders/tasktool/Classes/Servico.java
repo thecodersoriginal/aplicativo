@@ -13,6 +13,17 @@ public class Servico
     private Usuario destino;
     private int dias;
 
+    public Servico(int id, String descricao, DateTime agendadaPara, DateTime iniciadoEm, DateTime finalizadoEm, Usuario origem, Usuario destino, int dias) {
+        this.id = id;
+        this.descricao = descricao;
+        this.agendadaPara = agendadaPara;
+        this.iniciadoEm = iniciadoEm;
+        this.finalizadoEm = finalizadoEm;
+        this.origem = origem;
+        this.destino = destino;
+        this.dias = dias;
+    }
+
     public int getId() {
         return id;
     }

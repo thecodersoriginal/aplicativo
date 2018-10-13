@@ -8,6 +8,14 @@ public class Equipamento
     private boolean emUso;
     private boolean ativo;
 
+    public Equipamento(int id, String codigo, String descricao, boolean emUso, boolean ativo) {
+        this.id = id;
+        this.codigo = codigo;
+        this.descricao = descricao;
+        this.emUso = emUso;
+        this.ativo = ativo;
+    }
+
     public int getId() {
         return id;
     }

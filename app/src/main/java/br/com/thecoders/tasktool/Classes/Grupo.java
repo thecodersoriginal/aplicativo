@@ -5,6 +5,11 @@ public class Grupo {
     private int id;
     private String descricao;
 
+    public Grupo(int id, String descricao) {
+        this.id = id;
+        this.descricao = descricao;
+    }
+
     public int getId() {
         return id;
     }

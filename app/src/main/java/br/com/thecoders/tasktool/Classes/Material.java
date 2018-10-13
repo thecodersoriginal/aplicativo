@@ -6,6 +6,12 @@ public class Material {
     private String descricao;
     private int quantidadeAtual;
 
+    public Material(int id, String descricao, int quantidadeAtual) {
+        this.id = id;
+        this.descricao = descricao;
+        this.quantidadeAtual = quantidadeAtual;
+    }
+
     public int getId() {
         return id;
     }

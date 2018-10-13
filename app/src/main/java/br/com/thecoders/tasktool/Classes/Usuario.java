@@ -11,6 +11,17 @@ public class Usuario
     private String chave;
     private String tipo;
 
+    public Usuario(int id, String login, String nome, String telefone, String email, String senha, String chave, String tipo) {
+        this.id = id;
+        this.login = login;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.senha = senha;
+        this.chave = chave;
+        this.tipo = tipo;
+    }
+
     public int getId() {
         return id;
     }
