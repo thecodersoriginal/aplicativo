@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -36,8 +35,9 @@
             android:id="@+id/supervisor_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            tools:text="@string/criadopor" />
+            android:labelFor="@id/supervisor_edittext"
+            android:text="@string/criadopor"
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/supervisor_edittext"
@@ -50,6 +50,7 @@
             android:id="@+id/descricao_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:labelFor="@id/descricao_edittext"
             android:text="@string/servico"
             android:textSize="18sp" />
 
@@ -71,7 +72,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Iniciada em"
+                android:labelFor="@id/inicio_edittext"
+                android:text="@string/iniciadoem"
                 android:textSize="18sp" />
 
             <TextView
@@ -79,7 +81,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Finalizada em"
+                android:labelFor="@id/final_edittext"
+                android:text="@string/finalizadoem"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -137,6 +140,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:baselineAligned="false"
         android:orientation="horizontal"
         android:paddingBottom="20dp"
         android:weightSum="3">
@@ -152,6 +156,7 @@
                 android:layout_height="60dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/background_alert"
+                android:contentDescription="@string/iniciadoem"
                 android:onClick="iniciar"
                 app:srcCompat="@drawable/ic_play" />
         </RelativeLayout>
@@ -167,7 +172,8 @@
                 android:layout_height="60dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/background_neutral"
-                android:onClick="movimentarestoque"
+                android:contentDescription="@string/movimentar"
+                android:onClick="movimentarEstoque"
                 app:srcCompat="@drawable/ic_import_export" />
         </RelativeLayout>
 
@@ -182,6 +188,7 @@
                 android:layout_height="60dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/background_good"
+                android:contentDescription="@string/finalizadoem"
                 android:onClick="finalizar"
                 app:srcCompat="@drawable/ic_check" />
         </RelativeLayout>

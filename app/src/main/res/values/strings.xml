@@ -22,4 +22,7 @@
     <string name="funcionario">Funcionário Encarregado</string>
     <string name="funcionarionovo">Novo Funcionário Encarregado</string>
     <string name="criadopor">Criado por</string>
+    <string name="iniciadoem">Iniciado em</string>
+    <string name="finalizadoem">Finalizado em</string>
+    <string name="movimentar">Movimentar Estoque</string>
 </resources>
