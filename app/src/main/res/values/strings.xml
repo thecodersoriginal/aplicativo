@@ -6,4 +6,8 @@
     <string name="entrar">Entrar</string>
     <string name="recuperarSenha">Esqueceu sua senha? Clique Aqui</string>
     <string name="agenda">Agenda</string>
+    <string name="entrada">Entrada</string>
+    <string name="saida">Saida</string>
+    <string name="alerta">Alerta</string>
+    <string name="tarefa">Tarefa</string>
 </resources>
