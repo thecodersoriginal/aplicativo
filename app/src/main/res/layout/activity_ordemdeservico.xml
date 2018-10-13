@@ -115,7 +115,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="@string/repeticao"
-                    android:inputType="textVisiblePassword" />
+                    android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
 
             <TextView
@@ -147,6 +147,7 @@
                 android:layout_height="60dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/background_bad"
+                android:onClick="excluir"
                 app:srcCompat="@drawable/ic_close" />
         </RelativeLayout>
 
@@ -161,6 +162,7 @@
                 android:layout_height="60dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/background_good"
+                android:onClick="confirmar"
                 app:srcCompat="@drawable/ic_check" />
         </RelativeLayout>
 

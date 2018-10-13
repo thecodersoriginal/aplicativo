@@ -2,19 +2,17 @@ package br.com.thecoders.tasktool.Adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 
 import br.com.thecoders.tasktool.FragmentEquipamento;
 import br.com.thecoders.tasktool.FragmentMaterial;
 
-public class PagerAdapter extends FragmentStatePagerAdapter
+public class PagerAdapterEstoque extends FragmentPagerAdapter
 {
-    int numTabs;
 
-    public PagerAdapter(FragmentManager fragmentManager, int numTabs)
+    public PagerAdapterEstoque(FragmentManager fm)
     {
-        super(fragmentManager);
-        this.numTabs = numTabs;
+        super(fm);
     }
 
     @Override
@@ -34,6 +32,20 @@ public class PagerAdapter extends FragmentStatePagerAdapter
     @Override
     public int getCount()
     {
-        return numTabs;
+        return 2;
+    }
+
+    @Override
+    public CharSequence getPageTitle(int position)
+    {
+        switch (position)
+        {
+            case 0:
+                return "Equipamento";
+            case 1:
+                return "Material";
+            default:
+                return null;
+        }
     }
 }

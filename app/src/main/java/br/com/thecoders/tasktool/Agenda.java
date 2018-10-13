@@ -47,7 +47,9 @@ public class Agenda extends AppCompatActivity
 
     public void selecionardata(View v)
     {
-        DatePickerDialog dialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener()
+        startActivity(new Intent(Agenda.this, Servico.class));
+
+        /*DatePickerDialog dialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener()
         {
             @Override
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2)
@@ -56,6 +58,6 @@ public class Agenda extends AppCompatActivity
                 dataButton.setText(String.format("%s\n%s", data.toString("EEEEEEEEEE"), data.toString("dd/MM/YYYY")));
             }
         }, data.getYear(), data.getMonthOfYear(), data.getDayOfMonth());
-        dialog.show();
+        dialog.show();*/
     }
 }
