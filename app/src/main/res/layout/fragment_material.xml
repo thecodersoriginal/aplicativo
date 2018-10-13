@@ -57,7 +57,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/equipamentos_listview"
+        android:id="@+id/materiais_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

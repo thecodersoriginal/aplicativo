@@ -28,7 +28,7 @@ public class Login extends AppCompatActivity
     public void entrar(View v)
     {
         if (validar())
-            startActivity(new Intent(this, Agenda.class));
+            startActivity(new Intent(this, MovimentoEstoque.class));
     }
 
     public boolean validar()

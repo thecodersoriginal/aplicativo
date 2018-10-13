@@ -39,7 +39,7 @@ public class AdapterAgenda extends BaseAdapter
     @Override
     public long getItemId(int i)
     {
-        return servicos.get(i).id;
+        return servicos.get(i).getId();
     }
 
     @Override
@@ -54,7 +54,9 @@ public class AdapterAgenda extends BaseAdapter
         CheckBox realizadaCheckBox = view.findViewById(R.id.realizada_checkbox);
 
         Servico servico = servicos.get(i);
-
+        horaTextView.setText(servico.getAgendadaParaString());
+        servicoTextView.setText(servico.getDescricao());
+        realizadaCheckBox.setChecked(servico.getFinalizadoEm() != null);
 
         return view;
     }

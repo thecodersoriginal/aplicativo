@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:isScrollContainer="true"
     android:padding="20dp">
 
     <LinearLayout
@@ -64,36 +66,35 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/botoes_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:paddingBottom="20dp"
-        android:weightSum="3">
-
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/botoes_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp"
+            android:weightSum="3">
 
-            <ImageButton
-                android:id="@+id/finalizar_button"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/background_good"
-                android:onClick="confirmar"
-                app:srcCompat="@drawable/ic_check" />
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
+                <ImageButton
+                    android:id="@+id/finalizar_button"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/background_good"
+                    android:onClick="confirmar"
+                    app:srcCompat="@drawable/ic_check" />
+            </RelativeLayout>
+
+        </LinearLayout>
     </LinearLayout>
-
 </RelativeLayout>

@@ -13,7 +13,8 @@ public class Servico
     private Usuario destino;
     private int dias;
 
-    public Servico(int id, String descricao, DateTime agendadaPara, DateTime iniciadoEm, DateTime finalizadoEm, Usuario origem, Usuario destino, int dias) {
+    public Servico(int id, String descricao, DateTime agendadaPara, DateTime iniciadoEm, DateTime finalizadoEm, Usuario origem, Usuario destino, int dias)
+    {
         this.id = id;
         this.descricao = descricao;
         this.agendadaPara = agendadaPara;
@@ -24,67 +25,98 @@ public class Servico
         this.dias = dias;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public String getDescricao() {
+    public String getDescricao()
+    {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
+    public void setDescricao(String descricao)
+    {
         this.descricao = descricao;
     }
 
-    public String getAgendadaPara() {
-        return agendadaPara.toString("dd/mm/yyyy");
+    public String getAgendadaParaString()
+    {
+        return agendadaPara.toString("HH:mm");
     }
 
-    public void setAgendadaPara(DateTime agendadaPara) {
+    public void setAgendadaPara(DateTime agendadaPara)
+    {
         this.agendadaPara = agendadaPara;
     }
 
-    public String getIniciadoEm() {
+    public String getIniciadoEmString()
+    {
         return iniciadoEm.toString("dd/mm/yyyy");
     }
 
-    public void setIniciadoEm(DateTime iniciadoEm) {
+    public void setIniciadoEm(DateTime iniciadoEm)
+    {
         this.iniciadoEm = iniciadoEm;
     }
 
-    public String getFinalizadoEm() {
+    public DateTime getAgendadaPara()
+    {
+        return agendadaPara;
+    }
+
+    public DateTime getIniciadoEm()
+    {
+        return iniciadoEm;
+    }
+
+    public DateTime getFinalizadoEm()
+    {
+        return finalizadoEm;
+    }
+
+    public String getFinalizadoEmString()
+    {
         return finalizadoEm.toString("dd/mm/yyyy");
     }
 
-    public void setFinalizadoEm(DateTime finalizadoEm) {
+    public void setFinalizadoEm(DateTime finalizadoEm)
+    {
         this.finalizadoEm = finalizadoEm;
     }
 
-    public Usuario getOrigem() {
+    public Usuario getOrigem()
+    {
         return origem;
     }
 
-    public void setOrigem(Usuario origem) {
+    public void setOrigem(Usuario origem)
+    {
         this.origem = origem;
     }
 
-    public Usuario getDestino() {
+    public Usuario getDestino()
+    {
         return destino;
     }
 
-    public void setDestino(Usuario destino) {
+    public void setDestino(Usuario destino)
+    {
         this.destino = destino;
     }
 
-    public int getDias() {
+    public int getDias()
+    {
         return dias;
     }
 
-    public void setDias(int dias) {
+    public void setDias(int dias)
+    {
         this.dias = dias;
     }
 }
