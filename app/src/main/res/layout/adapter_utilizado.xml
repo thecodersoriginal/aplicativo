@@ -4,31 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:weightSum="11">
+    android:weightSum="10">
 
     <TextView
-        android:id="@+id/hora_textview"
+        android:id="@+id/qtde_textview"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2"
         android:gravity="center_vertical"
+        android:textAlignment="center"
+        android:textColor="@color/colorGood"
         android:textSize="18sp"
-        tools:text="10:00" />
+        tools:text="1" />
 
     <TextView
-        android:id="@+id/servico_textview"
+        android:id="@+id/descricao_textview"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="8"
         android:gravity="center_vertical"
+        android:textColor="@color/colorGood"
         android:textSize="18sp"
-        tools:text="Limpeza da piscina" />
-
-    <CheckBox
-        android:id="@+id/realizada_textview"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="right|center_vertical" />
+        tools:text="Material ou Equipamento" />
 
 </LinearLayout>

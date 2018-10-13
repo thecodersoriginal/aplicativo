@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -22,14 +23,42 @@
             android:textSize="18sp" />
     </android.support.v7.widget.Toolbar>
 
-    <ListView
-        android:id="@+id/estoque_listview"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_above="@id/botoes_layout"
         android:layout_below="@id/toolbar"
-        android:padding="20dp"
-        android:textAlignment="center" />
+        android:orientation="vertical">
+
+        <android.support.design.widget.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:tabIndicatorColor="@color/colorPrimaryDark"
+            app:tabSelectedTextColor="@android:color/white"
+            app:tabTextColor="@android:color/white">
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/equipamento_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/equipamento" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/material_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/material" />
+        </android.support.design.widget.TabLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/tab_viewer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/botoes_layout"
@@ -37,28 +66,21 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:padding="20dp"
-        android:weightSum="2">
+        android:paddingBottom="20dp">
 
-        <Button
-            android:id="@+id/entrada_button"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_good"
-            android:text="@string/entrada"
-            android:textColor="@android:color/background_light" />
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
-        <Button
-            android:id="@+id/saida_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/background_bad"
-            android:text="@string/saida"
-            android:textColor="@android:color/background_light" />
+            <ImageButton
+                android:id="@+id/movimentarestoque_button"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/background_neutral"
+                app:srcCompat="@drawable/ic_import_export" />
+        </RelativeLayout>
 
     </LinearLayout>
 

@@ -1,74 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="20dp"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
 
     <LinearLayout
         android:id="@+id/campousuario"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/usuario_textview"
-            android:layout_width="0dp"
-            android:layout_weight="2.5"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
+            <android.support.v7.widget.AppCompatAutoCompleteTextView
                 android:id="@+id/usuario_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/equipamento" />
+                android:hint="@string/usuario" />
 
         </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/servico_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </LinearLayout>
+            <android.support.v7.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/servico_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/servico" />
 
-    <LinearLayout
-        android:id="@+id/campotarefa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/campousuario"
-        android:weightSum="1">
-
-        <EditText
-            android:id="@+id/tarefa_textview"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            tools:text="Limpar Piscina" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/estoque_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/campotarefa"
-        android:layout_marginTop="20dp">
+        </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TabLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabTextColor="@color/colorPrimary"
             app:tabIndicatorColor="@color/colorPrimaryDark"
-            app:tabSelectedTextColor="@color/colorPrimaryDark">
+            app:tabSelectedTextColor="@color/colorPrimaryDark"
+            app:tabTextColor="@color/colorPrimary">
 
             <android.support.design.widget.TabItem
+                android:id="@+id/equipamento_tab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/equipamento" />
 
             <android.support.design.widget.TabItem
+                android:id="@+id/material_tab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/material" />
@@ -82,23 +67,32 @@
             android:layout_height="wrap_content"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/botoes_layout"
-        android:layout_below="@id/estoque_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:weightSum="1">
+        android:paddingBottom="20dp"
+        android:weightSum="3">
 
-        <Button
-            android:id="@+id/confirmar_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            tools:text="Confirmar" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/finalizar_button"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/background_good"
+                app:srcCompat="@drawable/ic_check" />
+        </RelativeLayout>
+
     </LinearLayout>
 
 </RelativeLayout>

@@ -9,9 +9,17 @@
     <string name="entrada">Entrada</string>
     <string name="saida">Saida</string>
     <string name="alerta">Alerta</string>
-    <string name="tarefa">Tarefa</string>
+    <string name="servico">Serviço</string>
     <string name="estoque">Estoque</string>
     <string name="equipamento">Equipamento</string>
     <string name="material">Material</string>
     <string name="usuario">Usuário</string>
+    <string name="data">Data</string>
+    <string name="hora">Hora</string>
+    <string name="repeticao">Repetir em</string>
+    <string name="dias">dias</string>
+    <string name="descricao">Descrição</string>
+    <string name="funcionario">Funcionário Encarregado</string>
+    <string name="funcionarionovo">Novo Funcionário Encarregado</string>
+    <string name="criadopor">Criado por</string>
 </resources>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/tarefa"
+            android:text="@string/servico"
             android:textAllCaps="true"
             android:textColor="@android:color/background_light"
             android:textSize="18sp" />
@@ -28,6 +27,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/botoes_layout"
         android:layout_below="@id/toolbar"
         android:orientation="vertical"
         android:padding="20dp">
@@ -36,15 +36,13 @@
             android:id="@+id/supervisor_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
-            tools:text="Criada por" />
+            tools:text="@string/criadopor" />
 
         <EditText
             android:id="@+id/supervisor_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:ems="10"
             android:inputType="textPersonName" />
 
@@ -52,23 +50,21 @@
             android:id="@+id/descricao_textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp"
-            tools:text="Criada por" />
+            android:text="@string/servico"
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/descricao_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:ems="10"
             android:inputType="textPersonName" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="2"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="2">
 
             <TextView
                 android:id="@+id/inicio_textview"
@@ -76,7 +72,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Iniciada em"
-                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <TextView
@@ -85,7 +80,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Finalizada em"
-                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -96,45 +90,102 @@
             android:weightSum="2">
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/inicio_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/final_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="344dp"
+        <android.support.design.widget.TabLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
+            app:tabIndicatorColor="@color/colorPrimaryDark"
+            app:tabSelectedTextColor="@color/colorPrimaryDark"
+            app:tabTextColor="@color/colorPrimary">
 
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+            <android.support.design.widget.TabItem
+                android:id="@+id/equipamento_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/equipamento" />
 
-                android:background="@drawable/background_alert"
-                app:srcCompat="@drawable/ic_play" />
+            <android.support.design.widget.TabItem
+                android:id="@+id/material_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/material" />
+        </android.support.design.widget.TabLayout>
 
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-
-                android:background="@drawable/background_good"
-                app:srcCompat="@drawable/ic_check" />
-        </LinearLayout>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/tab_viewer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/botoes_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+        android:weightSum="3">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/iniciar_button"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/background_alert"
+                android:onClick="iniciar"
+                app:srcCompat="@drawable/ic_play" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/movimentarestoque_button"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/background_neutral"
+                android:onClick="movimentarestoque"
+                app:srcCompat="@drawable/ic_import_export" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/finalizar_button"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/background_good"
+                android:onClick="finalizar"
+                app:srcCompat="@drawable/ic_check" />
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>
