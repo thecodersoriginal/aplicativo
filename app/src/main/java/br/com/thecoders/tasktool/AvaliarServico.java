@@ -56,16 +56,8 @@ public class AvaliarServico extends AppCompatActivity
         movimentarEstoqueButton.setImageDrawable(getDrawable(R.drawable.ic_star));
     }
 
-    public void iniciar(View v)
-    {
-    }
-
-    public void movimentarEstoque(View v)
+    public void movimentarAvaliar(View v)
     {
         startActivity(new Intent(this, MovimentoEstoque.class));
-    }
-
-    public void finalizar(View v)
-    {
     }
 }

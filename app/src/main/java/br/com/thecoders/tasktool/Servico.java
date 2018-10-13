@@ -48,7 +48,7 @@ public class Servico extends AppCompatActivity
     {
     }
 
-    public void movimentarEstoque(View v)
+    public void movimentarAvaliar(View v)
     {
         startActivity(new Intent(this, MovimentoEstoque.class));
     }

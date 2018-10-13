@@ -1,8 +1,8 @@
 package br.com.thecoders.tasktool;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
@@ -28,7 +28,7 @@ public class Login extends AppCompatActivity
     public void entrar(View v)
     {
         //if (validar())
-            startActivity(new Intent(this, AvaliarServico.class));
+        startActivity(new Intent(this, AvaliarServico.class));
     }
 
     public boolean validar()

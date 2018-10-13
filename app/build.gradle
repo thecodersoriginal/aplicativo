@@ -31,4 +31,5 @@ dependencies {
     implementation 'joda-time:joda-time:2.10'
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.koushikdutta.ion:ion:2.2.1'
 }

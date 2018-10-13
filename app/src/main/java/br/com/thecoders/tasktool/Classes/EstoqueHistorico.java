@@ -59,14 +59,14 @@ public class EstoqueHistorico
         return registradoEm;
     }
 
-    public String getRegistradoEmString()
-    {
-        return registradoEm.toString("dd/MM/yyyy\nHH:mm");
-    }
-
     public void setRegistradoEm(DateTime registradoEm)
     {
         this.registradoEm = registradoEm;
+    }
+
+    public String getRegistradoEmString()
+    {
+        return registradoEm.toString("dd/MM/yyyy\nHH:mm");
     }
 
     public Usuario getResponsavel()

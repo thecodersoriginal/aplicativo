@@ -50,19 +50,9 @@ public class Servico
         return agendadaPara.toString("HH:mm");
     }
 
-    public void setAgendadaPara(DateTime agendadaPara)
-    {
-        this.agendadaPara = agendadaPara;
-    }
-
     public String getIniciadoEmString()
     {
         return iniciadoEm.toString("dd/mm/yyyy");
-    }
-
-    public void setIniciadoEm(DateTime iniciadoEm)
-    {
-        this.iniciadoEm = iniciadoEm;
     }
 
     public DateTime getAgendadaPara()
@@ -70,9 +60,19 @@ public class Servico
         return agendadaPara;
     }
 
+    public void setAgendadaPara(DateTime agendadaPara)
+    {
+        this.agendadaPara = agendadaPara;
+    }
+
     public DateTime getIniciadoEm()
     {
         return iniciadoEm;
+    }
+
+    public void setIniciadoEm(DateTime iniciadoEm)
+    {
+        this.iniciadoEm = iniciadoEm;
     }
 
     public DateTime getFinalizadoEm()
@@ -80,14 +80,14 @@ public class Servico
         return finalizadoEm;
     }
 
-    public String getFinalizadoEmString()
-    {
-        return finalizadoEm.toString("dd/mm/yyyy");
-    }
-
     public void setFinalizadoEm(DateTime finalizadoEm)
     {
         this.finalizadoEm = finalizadoEm;
+    }
+
+    public String getFinalizadoEmString()
+    {
+        return finalizadoEm.toString("dd/mm/yyyy");
     }
 
     public Usuario getOrigem()

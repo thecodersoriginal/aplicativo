@@ -1,16 +1,20 @@
 package br.com.thecoders.tasktool.Classes;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.joda.time.DateTime;
 
 public class Alerta
 {
+    @SerializedName("Id")
     private int id;
     private String mensagem;
     private Usuario origem;
     private Usuario destino;
     private DateTime visualizadoEm;
 
-    public Alerta(int id, String mensagem, Usuario origem, Usuario destino, DateTime visualizadoEm) {
+    public Alerta(int id, String mensagem, Usuario origem, Usuario destino, DateTime visualizadoEm)
+    {
         this.id = id;
         this.mensagem = mensagem;
         this.origem = origem;
@@ -18,43 +22,53 @@ public class Alerta
         this.visualizadoEm = visualizadoEm;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public String getMensagem() {
+    public String getMensagem()
+    {
         return mensagem;
     }
 
-    public void setMensagem(String mensagem) {
+    public void setMensagem(String mensagem)
+    {
         this.mensagem = mensagem;
     }
 
-    public Usuario getOrigem() {
+    public Usuario getOrigem()
+    {
         return origem;
     }
 
-    public void setOrigem(Usuario origem) {
+    public void setOrigem(Usuario origem)
+    {
         this.origem = origem;
     }
 
-    public Usuario getDestino() {
+    public Usuario getDestino()
+    {
         return destino;
     }
 
-    public void setDestino(Usuario destino) {
+    public void setDestino(Usuario destino)
+    {
         this.destino = destino;
     }
 
-    public String getVisualizadoEm() {
+    public String getVisualizadoEm()
+    {
         return visualizadoEm.toString("dd/mm/yyyy HH:mm");
     }
 
-    public void setVisualizadoEm(DateTime visualizadoEm) {
+    public void setVisualizadoEm(DateTime visualizadoEm)
+    {
         this.visualizadoEm = visualizadoEm;
     }
 }
