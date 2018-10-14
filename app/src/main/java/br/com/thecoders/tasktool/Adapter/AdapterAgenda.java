@@ -54,7 +54,7 @@ public class AdapterAgenda extends BaseAdapter
         CheckBox realizadaCheckBox = view.findViewById(R.id.realizada_checkbox);
 
         Servico servico = servicos.get(i);
-        horaTextView.setText(servico.getAgendadaParaString());
+        horaTextView.setText(servico.getAgendadaPara().toString("HH:mm"));
         servicoTextView.setText(servico.getDescricao());
         realizadaCheckBox.setChecked(servico.getFinalizadoEm() != null);
 

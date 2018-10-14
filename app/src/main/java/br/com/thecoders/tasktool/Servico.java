@@ -9,18 +9,26 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.koushikdutta.ion.Response;
 
+import org.joda.time.DateTime;
+
 import br.com.thecoders.tasktool.Adapter.PagerAdapterServico;
-import br.com.thecoders.tasktool.Classes.RespostaLogin;
+import br.com.thecoders.tasktool.Util.DeserializerData;
+import br.com.thecoders.tasktool.Util.SharedPref;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class Servico extends AppCompatActivity
 {
+    private SharedPref sharedPref;
+    private int id;
+
     @BindView(R.id.supervisor_edittext)
     public EditText supervisorEditText;
     @BindView(R.id.servico_edittext)
@@ -41,6 +49,8 @@ public class Servico extends AppCompatActivity
         setContentView(R.layout.activity_servico);
 
         ButterKnife.bind(this);
+        sharedPref = new SharedPref(this);
+        id = getIntent().getIntExtra("Id", 0);
 
         supervisorEditText.setKeyListener(null);
         servicoEditText.setKeyListener(null);
@@ -64,12 +74,15 @@ public class Servico extends AppCompatActivity
 
     public void finalizar(View v)
     {
+
     }
 
     public void carregarDados()
     {
+        id = 1;
         Ion.with(this)
-                .load("http://192.168.0.88/TaskTop/api/task.key/1")
+                .load(getResources().getString(R.string.url) + "task.key/" + id)
+                .setHeader("Authorization", sharedPref.getToken())
                 .asJsonObject()
                 .withResponse()
                 .setCallback(new FutureCallback<Response<JsonObject>>()
@@ -79,26 +92,17 @@ public class Servico extends AppCompatActivity
                     {
                         if (result.getHeaders().code() == 200)
                         {
-                            RespostaLogin login = gson.fromJson(result.getResult(), RespostaLogin.class);
-                            sharedPref.setLogin(loginEditText.getText().toString());
-                            sharedPref.setSenha(salvarSenhaSwitch.isChecked() ? senhaEditText.getText().toString() : "");
-                            sharedPref.setId(login.getUsuario().getId());
-                            sharedPref.salvar();
-
-                            loadingProgressBar.setVisibility(View.INVISIBLE);
-
-                            if (login.getUsuario().getTipo().equals("funcionario"))
-                                startActivity(new Intent(Login.this, Agenda.class));
-                            else if (login.getUsuario().getTipo().equals("estoque"))
-                                startActivity(new Intent(Login.this, Estoque.class));
-                            else if (login.getUsuario().getTipo().equals("supervisor"))
-                                startActivity(new Intent(Login.this, OrdemDeServico.class));
+                            Gson gson = new GsonBuilder().registerTypeAdapter(DateTime.class, new DeserializerData()).create();
+                            br.com.thecoders.tasktool.Classes.Servico servico = gson.fromJson(result.getResult(), br.com.thecoders.tasktool.Classes.Servico.class);
+                            supervisorEditText.setText(servico.getSupervisor());
+                            servicoEditText.setText(servico.getDescricao());
+                            inicioEditText.setText(servico.getIniciadoEm().toString("dd/MM/yyyy HH:mm"));
+                            inicioEditText.setText(servico.getFinalizadoEm().toString("dd/MM/yyyy HH:mm"));
                         }
                         else
                         {
-                            Toast.makeText(Login.this, result.getResult().get("error").getAsJsonObject().get("message").getAsString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Servico.this, result.getResult().get("error").getAsJsonObject().get("message").getAsString(), Toast.LENGTH_SHORT).show();
                         }
-
                     }
                 });
     }

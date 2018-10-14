@@ -4,7 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 import org.joda.time.DateTime;
 
-public class Servico
+import java.io.Serializable;
+
+public class Servico implements Serializable
 {
     @SerializedName("Id")
     private int id;
