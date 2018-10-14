@@ -6,60 +6,77 @@ import org.joda.time.DateTime;
 
 public class Alerta
 {
-    @SerializedName("Id")
+    @SerializedName("id")
     private int id;
+    @SerializedName("message")
     private String mensagem;
-    private Usuario origem;
-    private Usuario destino;
+    @SerializedName("senderId")
+    private int idOrigem;
+    @SerializedName("receiverId")
+    private String idDestino;
+    @SerializedName("senderName")
+    private String NomeOrigem;
+    @SerializedName("receiverName")
+    private String NomeDestino;
+    @SerializedName("readAt")
     private DateTime visualizadoEm;
 
-    public Alerta(int id, String mensagem, Usuario origem, Usuario destino, DateTime visualizadoEm)
-    {
+    public Alerta(int id, String mensagem, int idOrigem, String idDestino, String nomeOrigem, String nomeDestino, DateTime visualizadoEm) {
         this.id = id;
         this.mensagem = mensagem;
-        this.origem = origem;
-        this.destino = destino;
+        this.idOrigem = idOrigem;
+        this.idDestino = idDestino;
+        NomeOrigem = nomeOrigem;
+        NomeDestino = nomeDestino;
         this.visualizadoEm = visualizadoEm;
     }
 
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
-    public void setId(int id)
-    {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getMensagem()
-    {
+    public String getMensagem() {
         return mensagem;
     }
 
-    public void setMensagem(String mensagem)
-    {
+    public void setMensagem(String mensagem) {
         this.mensagem = mensagem;
     }
 
-    public Usuario getOrigem()
-    {
-        return origem;
+    public int getIdOrigem() {
+        return idOrigem;
     }
 
-    public void setOrigem(Usuario origem)
-    {
-        this.origem = origem;
+    public void setIdOrigem(int idOrigem) {
+        this.idOrigem = idOrigem;
     }
 
-    public Usuario getDestino()
-    {
-        return destino;
+    public String getIdDestino() {
+        return idDestino;
     }
 
-    public void setDestino(Usuario destino)
-    {
-        this.destino = destino;
+    public void setIdDestino(String idDestino) {
+        this.idDestino = idDestino;
+    }
+
+    public String getNomeOrigem() {
+        return NomeOrigem;
+    }
+
+    public void setNomeOrigem(String nomeOrigem) {
+        NomeOrigem = nomeOrigem;
+    }
+
+    public String getNomeDestino() {
+        return NomeDestino;
+    }
+
+    public void setNomeDestino(String nomeDestino) {
+        NomeDestino = nomeDestino;
     }
 
     public String getVisualizadoEm()
