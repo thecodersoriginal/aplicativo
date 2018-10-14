@@ -34,7 +34,7 @@ public class FragmentListaMaterial extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.adapter_materialutilizado, container, false);
+        View view = inflater.inflate(R.layout.fragment_listar, container, false);
         ButterKnife.bind(this, view);
         sharedPref = new SharedPref(getContext());
         listarHistoricoStatus();
@@ -46,6 +46,7 @@ public class FragmentListaMaterial extends Fragment
         Ion.with(getContext())
                 .load(getResources().getString(R.string.url) + "stock.all/")
                 .setHeader("Authorization", sharedPref.getToken())
+                .setJsonObjectBody(new JsonObject())
                 .asJsonObject()
                 .withResponse()
                 .setCallback(new FutureCallback<Response<JsonObject>>()
