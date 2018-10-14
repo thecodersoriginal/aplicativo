@@ -57,7 +57,7 @@ public class FragmentListaEquipamento extends Fragment
                     {
                         if (result.getHeaders().code() == 200)
                         {
-                            List<Equipamento> equipamentos = new Gson().fromJson(result.getResult(), new TypeToken<ArrayList<Equipamento>>()
+                            List<Equipamento> equipamentos = new Gson().fromJson(result.getResult().get("items").getAsJsonArray(), new TypeToken<ArrayList<Equipamento>>()
                             {
                             }.getType());
                             listaListView.setAdapter(new AdapterEquipamentoUtilizado(getContext(), equipamentos));

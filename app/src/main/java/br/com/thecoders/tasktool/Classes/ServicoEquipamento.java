@@ -1,34 +1,38 @@
 package br.com.thecoders.tasktool.Classes;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ServicoEquipamento
 {
+    @SerializedName("userId")
+    private int usuarioId;
+    @SerializedName("equipmentId")
+    private int equipamentoId;
 
-    private Servico servico;
-    private Equipamento equipamento;
 
-    public ServicoEquipamento(Servico servico, Equipamento equipamento)
+    public ServicoEquipamento(int usuarioId, int equipamentoId)
     {
-        this.servico = servico;
-        this.equipamento = equipamento;
+        this.usuarioId = usuarioId;
+        this.equipamentoId = equipamentoId;
     }
 
-    public Servico getServico()
+    public int getUsuarioId()
     {
-        return servico;
+        return usuarioId;
     }
 
-    public void setServico(Servico servico)
+    public void setUsuarioId(int usuarioId)
     {
-        this.servico = servico;
+        this.usuarioId = usuarioId;
     }
 
-    public Equipamento getEquipamento()
+    public int getEquipamentoId()
     {
-        return equipamento;
+        return equipamentoId;
     }
 
-    public void setEquipamento(Equipamento equipamento)
+    public void setEquipamentoId(int equipamentoId)
     {
-        this.equipamento = equipamento;
+        this.equipamentoId = equipamentoId;
     }
 }

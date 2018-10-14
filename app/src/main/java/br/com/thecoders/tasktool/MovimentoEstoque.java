@@ -6,6 +6,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -22,7 +24,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.thecoders.tasktool.Adapter.PagerAdapterEstoque;
-import br.com.thecoders.tasktool.Classes.Servico;
 import br.com.thecoders.tasktool.Classes.Usuario;
 import br.com.thecoders.tasktool.Util.SharedPref;
 import butterknife.BindView;
@@ -32,14 +33,12 @@ public class MovimentoEstoque extends AppCompatActivity
 {
     private SharedPref sharedPref;
     private List<Usuario> usuarios;
-    private Servico servico;
+    private Usuario usuario;
 
     @BindView(R.id.toolbar)
     public Toolbar toolbar;
     @BindView(R.id.usuarios_spinner)
     public Spinner usuariosSpinner;
-    @BindView(R.id.servico_edittext)
-    public EditText servicoEditText;
     @BindView(R.id.tab_layout)
     public TabLayout tabLayout;
     @BindView(R.id.viewpager)
@@ -57,10 +56,23 @@ public class MovimentoEstoque extends AppCompatActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         sharedPref = new SharedPref(this);
 
-        servicoEditText.setKeyListener(null);
-
         viewPager.setAdapter(new PagerAdapterEstoque(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
+
+        usuariosSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                usuario = usuarios.get(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView)
+            {
+                usuario = null;
+            }
+        });
 
         listarUsuarios();
     }
@@ -106,5 +118,10 @@ public class MovimentoEstoque extends AppCompatActivity
                 break;
         }
         return true;
+    }
+
+    public Usuario getUsuario()
+    {
+        return usuario;
     }
 }

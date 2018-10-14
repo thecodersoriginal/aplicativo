@@ -55,7 +55,7 @@ public class FragmentListaMaterial extends Fragment
                     {
                         if (result.getHeaders().code() == 200)
                         {
-                            List<EstoqueHistorico> estoque = new Gson().fromJson(result.getResult(), new TypeToken<ArrayList<EstoqueHistorico>>()
+                            List<EstoqueHistorico> estoque = new Gson().fromJson(result.getResult().get("items").getAsJsonArray(), new TypeToken<ArrayList<EstoqueHistorico>>()
                             {
                             }.getType());
                             listaListView.setAdapter(new AdapterMaterialUtilizado(getContext(), estoque));

@@ -1,5 +1,6 @@
 package br.com.thecoders.tasktool;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.koushikdutta.async.future.FutureCallback;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.thecoders.tasktool.Classes.Equipamento;
+import br.com.thecoders.tasktool.Classes.ServicoEquipamento;
 import br.com.thecoders.tasktool.Util.SharedPref;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -49,6 +52,8 @@ public class FragmentEquipamento extends Fragment
             @Override
             public void onClick(View view)
             {
+
+
                 Ion.with(getContext())
                         .load("post", getResources().getString(R.string.url) + "task.equipament/")
                         .setHeader("Authorization", sharedPref.getToken())
@@ -77,9 +82,15 @@ public class FragmentEquipamento extends Fragment
             @Override
             public void onClick(View view)
             {
+                ServicoEquipamento servicoEquipamento = new ServicoEquipamento(((MovimentoEstoque) getActivity()).getUsuario().getId(), ((Equipamento) equipamentosSpinner.getSelectedItem()).getId());
+
+                final Gson gson = new GsonBuilder().create();
+                JsonObject jsonObject = gson.toJsonTree(servicoEquipamento, ServicoEquipamento.class).getAsJsonObject();
+
                 Ion.with(getContext())
-                        .load("delete", getResources().getString(R.string.url) + "task.equipament/")
+                        .load("delete", getResources().getString(R.string.url) + "task.equipment/")
                         .setHeader("Authorization", sharedPref.getToken())
+                        .setJsonObjectBody(jsonObject)
                         .asJsonObject()
                         .withResponse()
                         .setCallback(new FutureCallback<Response<JsonObject>>()
