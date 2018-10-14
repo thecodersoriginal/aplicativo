@@ -9,16 +9,18 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import br.com.thecoders.tasktool.Classes.ServicoMaterial;
+import br.com.thecoders.tasktool.Classes.EstoqueHistorico;
 import br.com.thecoders.tasktool.R;
 
 public class AdapterMaterialUtilizado extends BaseAdapter
 {
+    private Context context;
     private LayoutInflater layoutInflater;
-    private List<ServicoMaterial> materiais;
+    private List<EstoqueHistorico> materiais;
 
-    public AdapterMaterialUtilizado(Context context, List<ServicoMaterial> materiais)
+    public AdapterMaterialUtilizado(Context context, List<EstoqueHistorico> materiais)
     {
+        this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
         this.materiais = materiais;
     }
@@ -51,7 +53,10 @@ public class AdapterMaterialUtilizado extends BaseAdapter
         TextView quantidadeTextView = view.findViewById(R.id.quantidade_textview);
         TextView materialTextView = view.findViewById(R.id.material_textview);
 
-        ServicoMaterial material = materiais.get(i);
+        EstoqueHistorico material = materiais.get(i);
+
+        quantidadeTextView.setTextColor(material.getTipo() == 'S' ? context.getColor(R.color.colorBad) : context.getColor(R.color.colorGood));
+        materialTextView.setTextColor(material.getTipo() == 'S' ? context.getColor(R.color.colorBad) : context.getColor(R.color.colorGood));
 
         quantidadeTextView.setText(String.valueOf(material.getQuantidade()));
         materialTextView.setText(material.getMaterial().getDescricao());

@@ -9,16 +9,18 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import br.com.thecoders.tasktool.Classes.ServicoEquipamento;
+import br.com.thecoders.tasktool.Classes.Equipamento;
 import br.com.thecoders.tasktool.R;
 
 public class AdapterEquipamentoUtilizado extends BaseAdapter
 {
+    private Context context;
     private LayoutInflater layoutInflater;
-    private List<ServicoEquipamento> equipamentos;
+    private List<Equipamento> equipamentos;
 
-    public AdapterEquipamentoUtilizado(Context context, List<ServicoEquipamento> equipamentos)
+    public AdapterEquipamentoUtilizado(Context context, List<Equipamento> equipamentos)
     {
+        this.context = context;
         this.layoutInflater = LayoutInflater.from(context);
         this.equipamentos = equipamentos;
     }
@@ -50,9 +52,10 @@ public class AdapterEquipamentoUtilizado extends BaseAdapter
 
         TextView equipamentoTextView = view.findViewById(R.id.equipamento_textview);
 
-        ServicoEquipamento equipamento = equipamentos.get(i);
+        Equipamento equipamento = equipamentos.get(i);
 
-        equipamentoTextView.setText(equipamento.getEquipamento().getDescricao());
+        equipamentoTextView.setTextColor(equipamento.isEmUso() ? context.getColor(R.color.colorBad) : context.getColor(R.color.colorGood));
+        equipamentoTextView.setText(equipamento.getDescricao());
 
         return view;
     }

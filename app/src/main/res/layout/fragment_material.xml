@@ -14,51 +14,73 @@
         android:orientation="horizontal"
         android:weightSum="3">
 
+        <Spinner
+            android:id="@+id/equipamentos_spinner"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="2" />
+
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/material_layout"
+            android:id="@+id/quantidade_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="2">
+            android:layout_weight="1">
 
             <EditText
-                android:id="@+id/material_edittext"
-                android:layout_width="match_parent"
+                android:id="@+id/quantidade_edittext"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/material"
-                android:inputType="textVisiblePassword" />
+                android:layout_weight="1"
+                android:hint="@string/qtde"
+                android:inputType="number"
+                android:textAlignment="center" />
 
         </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:id="@+id/quantidade_edittext"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:hint="@string/qtde"
-            android:inputType="number"
-            android:textAlignment="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/botoes_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="20dp"
+        android:weightSum="2">
 
         <RelativeLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.5">
+            android:layout_weight="1">
+
 
             <ImageButton
-                android:id="@+id/adicionar_button"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:id="@+id/saida_button"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/background_alert"
+                android:contentDescription="@string/saida"
+                android:onClick="saida"
+                app:srcCompat="@drawable/ic_tirei" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/entrada_button"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_centerInParent="true"
                 android:background="@drawable/background_good"
-                android:contentDescription="@string/adicionar"
-                app:srcCompat="@drawable/ic_add" />
-
+                android:contentDescription="@string/entrada"
+                android:onClick="entrada"
+                app:srcCompat="@drawable/ic_devolvi" />
         </RelativeLayout>
 
     </LinearLayout>
-
-    <ListView
-        android:id="@+id/materiais_listview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </LinearLayout>
