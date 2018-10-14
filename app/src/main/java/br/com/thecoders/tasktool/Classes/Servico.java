@@ -1,28 +1,47 @@
 package br.com.thecoders.tasktool.Classes;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.joda.time.DateTime;
 
 public class Servico
 {
+    @SerializedName("Id")
     private int id;
+    @SerializedName("name")
     private String descricao;
+    @SerializedName("scheduledAt")
     private DateTime agendadaPara;
+    @SerializedName("startedAt")
     private DateTime iniciadoEm;
+    @SerializedName("finishedAt")
     private DateTime finalizadoEm;
-    private Usuario origem;
-    private Usuario destino;
-    private int dias;
+    @SerializedName("interruptedIn")
+    private DateTime interrompidoEm;
+    @SerializedName("senderId")
+    private int idSupervisor;
+    @SerializedName("senderName")
+    private String supervisor;
+    @SerializedName("receiverId")
+    private int IdFuncionario;
+    @SerializedName("receiverName")
+    private String Funcionario;
+    @SerializedName("repeatInDays")
+    private int repeatInDays;
 
-    public Servico(int id, String descricao, DateTime agendadaPara, DateTime iniciadoEm, DateTime finalizadoEm, Usuario origem, Usuario destino, int dias)
+    public Servico(int id, String descricao, DateTime agendadaPara, DateTime iniciadoEm, DateTime finalizadoEm, DateTime interrompidoEm, int idSupervisor, String supervisor, int idFuncionario, String funcionario, int repeatInDays)
     {
         this.id = id;
         this.descricao = descricao;
         this.agendadaPara = agendadaPara;
         this.iniciadoEm = iniciadoEm;
         this.finalizadoEm = finalizadoEm;
-        this.origem = origem;
-        this.destino = destino;
-        this.dias = dias;
+        this.interrompidoEm = interrompidoEm;
+        this.idSupervisor = idSupervisor;
+        this.supervisor = supervisor;
+        IdFuncionario = idFuncionario;
+        Funcionario = funcionario;
+        this.repeatInDays = repeatInDays;
     }
 
     public int getId()
@@ -43,16 +62,6 @@ public class Servico
     public void setDescricao(String descricao)
     {
         this.descricao = descricao;
-    }
-
-    public String getAgendadaParaString()
-    {
-        return agendadaPara.toString("HH:mm");
-    }
-
-    public String getIniciadoEmString()
-    {
-        return iniciadoEm.toString("dd/mm/yyyy");
     }
 
     public DateTime getAgendadaPara()
@@ -85,38 +94,63 @@ public class Servico
         this.finalizadoEm = finalizadoEm;
     }
 
-    public String getFinalizadoEmString()
+    public DateTime getInterrompidoEm()
     {
-        return finalizadoEm.toString("dd/mm/yyyy");
+        return interrompidoEm;
     }
 
-    public Usuario getOrigem()
+    public void setInterrompidoEm(DateTime interrompidoEm)
     {
-        return origem;
+        this.interrompidoEm = interrompidoEm;
     }
 
-    public void setOrigem(Usuario origem)
+    public int getIdSupervisor()
     {
-        this.origem = origem;
+        return idSupervisor;
     }
 
-    public Usuario getDestino()
+    public void setIdSupervisor(int idSupervisor)
     {
-        return destino;
+        this.idSupervisor = idSupervisor;
     }
 
-    public void setDestino(Usuario destino)
+    public String getSupervisor()
     {
-        this.destino = destino;
+        return supervisor;
     }
 
-    public int getDias()
+    public void setSupervisor(String supervisor)
     {
-        return dias;
+        this.supervisor = supervisor;
     }
 
-    public void setDias(int dias)
+    public int getIdFuncionario()
     {
-        this.dias = dias;
+        return IdFuncionario;
+    }
+
+    public void setIdFuncionario(int idFuncionario)
+    {
+        IdFuncionario = idFuncionario;
+    }
+
+    public String getFuncionario()
+    {
+        return Funcionario;
+    }
+
+    public void setFuncionario(String funcionario)
+    {
+        Funcionario = funcionario;
+    }
+
+    public int getRepeatInDays()
+    {
+        return repeatInDays;
+    }
+
+    public void setRepeatInDays(int repeatInDays)
+    {
+        this.repeatInDays = repeatInDays;
     }
 }

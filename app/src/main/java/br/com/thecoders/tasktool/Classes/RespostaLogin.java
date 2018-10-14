@@ -9,6 +9,7 @@ public class RespostaLogin {
     private String tokenAcesso;
     @SerializedName("expiresIn")
     private DateTime expiraEm;
+    @SerializedName("user")
     private Operador usuario;
 
     public RespostaLogin(String tokenAcesso, DateTime expiraEm, Operador usuario) {
