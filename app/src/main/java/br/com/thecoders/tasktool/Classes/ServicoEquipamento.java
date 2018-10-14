@@ -3,32 +3,27 @@ package br.com.thecoders.tasktool.Classes;
 public class ServicoEquipamento
 {
 
-    private Servico servico;
-    private Equipamento equipamento;
+    private int id;
+    private int nomeEquipamento;
 
-    public ServicoEquipamento(Servico servico, Equipamento equipamento)
-    {
-        this.servico = servico;
-        this.equipamento = equipamento;
+    public ServicoEquipamento(int id, int nomeEquipamento) {
+        this.id = id;
+        this.nomeEquipamento = nomeEquipamento;
     }
 
-    public Servico getServico()
-    {
-        return servico;
+    public int getId() {
+        return id;
     }
 
-    public void setServico(Servico servico)
-    {
-        this.servico = servico;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Equipamento getEquipamento()
-    {
-        return equipamento;
+    public int getNomeEquipamento() {
+        return nomeEquipamento;
     }
 
-    public void setEquipamento(Equipamento equipamento)
-    {
-        this.equipamento = equipamento;
+    public void setNomeEquipamento(int nomeEquipamento) {
+        this.nomeEquipamento = nomeEquipamento;
     }
 }

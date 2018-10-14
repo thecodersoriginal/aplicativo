@@ -1,11 +1,18 @@
 package br.com.thecoders.tasktool.Classes;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Equipamento
 {
+    @SerializedName("id")
     private int id;
+    @SerializedName("code")
     private String codigo;
+    @SerializedName("description")
     private String descricao;
+    @SerializedName("inUse")
     private boolean emUso;
+    @SerializedName("active")
     private boolean ativo;
 
     public Equipamento(int id, String codigo, String descricao, boolean emUso, boolean ativo)
