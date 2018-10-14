@@ -54,7 +54,7 @@ public class AdapterEquipamentoUtilizado extends BaseAdapter
 
         Equipamento equipamento = equipamentos.get(i);
 
-        equipamentoTextView.setTextColor(equipamento.isEmUso() ? context.getColor(R.color.colorBad) : context.getColor(R.color.colorGood));
+        //equipamentoTextView.setTextColor(equipamento.isEmUso() ? context.getColor(R.color.colorBad) : context.getColor(R.color.colorGood));
         equipamentoTextView.setText(equipamento.getDescricao());
 
         return view;
