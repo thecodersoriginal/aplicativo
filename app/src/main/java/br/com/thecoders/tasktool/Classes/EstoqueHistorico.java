@@ -1,27 +1,44 @@
 package br.com.thecoders.tasktool.Classes;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.joda.time.DateTime;
 
 public class EstoqueHistorico
 {
-
+    @SerializedName("id")
     private int id;
+    @SerializedName("quantity")
     private int quantidade;
+    @SerializedName("type")
     private char tipo;
-    private DateTime registradoEm;
-    private Usuario responsavel;
-    private Material material;
-    private Servico servico;
+    @SerializedName("userId")
+    private int usuarioID;
+    @SerializedName("userName")
+    private String usuario;
+    @SerializedName("materialId")
+    private int materialId;
+    @SerializedName("materialName")
+    private String material;
+    @SerializedName("taskId")
+    private int servicoId;
+    @SerializedName("taskName")
+    private String servico;
+    @SerializedName("date")
+    private DateTime data;
 
-    public EstoqueHistorico(int id, int quantidade, char tipo, DateTime registradoEm, Usuario responsavel, Material material, Servico servico)
+    public EstoqueHistorico(int id, int quantidade, char tipo, int usuarioID, String usuario, int materialId, String material, int servicoId, String servico, DateTime data)
     {
         this.id = id;
         this.quantidade = quantidade;
         this.tipo = tipo;
-        this.registradoEm = registradoEm;
-        this.responsavel = responsavel;
+        this.usuarioID = usuarioID;
+        this.usuario = usuario;
+        this.materialId = materialId;
         this.material = material;
+        this.servicoId = servicoId;
         this.servico = servico;
+        this.data = data;
     }
 
     public int getId()
@@ -54,48 +71,73 @@ public class EstoqueHistorico
         this.tipo = tipo;
     }
 
-    public DateTime getRegistradoEm()
+    public int getUsuarioID()
     {
-        return registradoEm;
+        return usuarioID;
     }
 
-    public void setRegistradoEm(DateTime registradoEm)
+    public void setUsuarioID(int usuarioID)
     {
-        this.registradoEm = registradoEm;
+        this.usuarioID = usuarioID;
     }
 
-    public String getRegistradoEmString()
+    public String getUsuario()
     {
-        return registradoEm.toString("dd/MM/yyyy\nHH:mm");
+        return usuario;
     }
 
-    public Usuario getResponsavel()
+    public void setUsuario(String usuario)
     {
-        return responsavel;
+        this.usuario = usuario;
     }
 
-    public void setResponsavel(Usuario responsavel)
+    public int getMaterialId()
     {
-        this.responsavel = responsavel;
+        return materialId;
     }
 
-    public Material getMaterial()
+    public void setMaterialId(int materialId)
+    {
+        this.materialId = materialId;
+    }
+
+    public String getMaterial()
     {
         return material;
     }
 
-    public void setMaterial(Material material)
+    public void setMaterial(String material)
     {
         this.material = material;
     }
 
-    public Servico getServico()
+    public int getServicoId()
+    {
+        return servicoId;
+    }
+
+    public void setServicoId(int servicoId)
+    {
+        this.servicoId = servicoId;
+    }
+
+    public String getServico()
     {
         return servico;
     }
 
-    public void setServico(Servico servico)
+    public void setServico(String servico)
     {
         this.servico = servico;
+    }
+
+    public DateTime getData()
+    {
+        return data;
+    }
+
+    public void setData(DateTime data)
+    {
+        this.data = data;
     }
 }

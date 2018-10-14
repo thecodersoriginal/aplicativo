@@ -1,37 +1,41 @@
 package br.com.thecoders.tasktool.Classes;
 
+import com.google.gson.annotations.SerializedName;
+
 public class ServicoMaterial
 {
-
-    private Servico servico;
-    private Material material;
+    @SerializedName("userId")
+    private int usuarioId;
+    @SerializedName("materialId")
+    private int materialId;
+    @SerializedName("quantity")
     private int quantidade;
 
-    public ServicoMaterial(Servico servico, Material material, int quantidade)
+    public ServicoMaterial(int usuarioId, int materialId, int quantidade)
     {
-        this.servico = servico;
-        this.material = material;
+        this.usuarioId = usuarioId;
+        this.materialId = materialId;
         this.quantidade = quantidade;
     }
 
-    public Servico getServico()
+    public int getUsuarioId()
     {
-        return servico;
+        return usuarioId;
     }
 
-    public void setServico(Servico servico)
+    public void setUsuarioId(int usuarioId)
     {
-        this.servico = servico;
+        this.usuarioId = usuarioId;
     }
 
-    public Material getMaterial()
+    public int getMaterialId()
     {
-        return material;
+        return materialId;
     }
 
-    public void setMaterial(Material material)
+    public void setMaterialId(int materialId)
     {
-        this.material = material;
+        this.materialId = materialId;
     }
 
     public int getQuantidade()

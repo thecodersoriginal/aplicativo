@@ -39,8 +39,14 @@ public class FragmentListaEquipamento extends Fragment
         View view = inflater.inflate(R.layout.fragment_listar, container, false);
         ButterKnife.bind(this, view);
         sharedPref = new SharedPref(getContext());
-        listarEquipamentos();
         return view;
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        listarEquipamentos();
     }
 
     public void listarEquipamentos()

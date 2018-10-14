@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -99,6 +98,14 @@ public class MovimentoEstoque extends AppCompatActivity
                                     android.R.layout.simple_spinner_item, usuarios);
                             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                             usuariosSpinner.setAdapter(dataAdapter);
+
+                            if (sharedPref.getTipo().equals("funcionario"))
+                            {
+                                for (int i = 0; i < usuarios.size(); i++)
+                                    if (usuarios.get(i).getId() == sharedPref.getId())
+                                        usuariosSpinner.setSelection(i);
+                                usuariosSpinner.setEnabled(false);
+                            }
                         }
                         else
                         {

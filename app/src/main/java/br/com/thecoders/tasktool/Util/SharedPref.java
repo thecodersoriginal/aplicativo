@@ -10,6 +10,7 @@ public class SharedPref
     private String login;
     private String senha;
     private String token;
+    private String tipo;
     private int id;
 
     public SharedPref(Context context)
@@ -19,6 +20,7 @@ public class SharedPref
         login = sharedPref.getString("Login", "");
         senha = sharedPref.getString("Senha", "");
         token = sharedPref.getString("Token", "");
+        tipo = sharedPref.getString("Tipo", "");
         id = sharedPref.getInt("Id", 0);
     }
 
@@ -28,6 +30,7 @@ public class SharedPref
         editor.putString("Login", login);
         editor.putString("Senha", senha);
         editor.putString("Token", "Bearer " + token);
+        editor.putString("Tipo", tipo);
         editor.putInt("Id", id);
         editor.apply();
     }
@@ -70,5 +73,15 @@ public class SharedPref
     public void setToken(String token)
     {
         this.token = token;
+    }
+
+    public String getTipo()
+    {
+        return tipo;
+    }
+
+    public void setTipo(String tipo)
+    {
+        this.tipo = tipo;
     }
 }

@@ -79,6 +79,7 @@ public class Login extends AppCompatActivity
                                 sharedPref.setLogin(loginEditText.getText().toString());
                                 sharedPref.setSenha(salvarSenhaSwitch.isChecked() ? senhaEditText.getText().toString() : "");
                                 sharedPref.setToken(login.getTokenAcesso());
+                                sharedPref.setTipo(login.getUsuario().getTipo());
                                 sharedPref.setId(login.getUsuario().getId());
                                 sharedPref.salvar();
 

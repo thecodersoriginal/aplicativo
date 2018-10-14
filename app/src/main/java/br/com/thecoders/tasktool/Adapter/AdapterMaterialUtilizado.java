@@ -55,11 +55,8 @@ public class AdapterMaterialUtilizado extends BaseAdapter
 
         EstoqueHistorico material = materiais.get(i);
 
-        //quantidadeTextView.setTextColor(material.getTipo() == 'S' ? context.getColor(R.color.colorBad) : context.getColor(R.color.colorGood));
-        //materialTextView.setTextColor(material.getTipo() == 'S' ? context.getColor(R.color.colorBad) : context.getColor(R.color.colorGood));
-
-        quantidadeTextView.setText(String.valueOf(material.getQuantidade()));
-        materialTextView.setText(material.getMaterial().getDescricao());
+        quantidadeTextView.setText(material.getTipo() == 'S' ? String.format("-%d", material.getQuantidade()) : String.format("+%d", material.getQuantidade()));
+        materialTextView.setText(material.getMaterial());
 
         return view;
     }

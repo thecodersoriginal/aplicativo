@@ -12,7 +12,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.koushikdutta.async.future.FutureCallback;
@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.thecoders.tasktool.Classes.Material;
+import br.com.thecoders.tasktool.Classes.ServicoMaterial;
 import br.com.thecoders.tasktool.Util.SharedPref;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,8 +35,8 @@ public class FragmentMaterial extends Fragment
 
     @BindView(R.id.material_spinner)
     public Spinner materialSpinner;
-    @BindView(R.id.quantidade_edittext)
-    public EditText quantidadeEditText;
+    @BindView(R.id.qtde_spinner)
+    public Spinner qtdeSpinner;
     @BindView(R.id.saida_button)
     public ImageButton saidaButton;
     @BindView(R.id.entrada_button)
@@ -53,9 +54,15 @@ public class FragmentMaterial extends Fragment
             @Override
             public void onClick(View view)
             {
+                ServicoMaterial servicoMaterial = new ServicoMaterial(((MovimentoEstoque) getActivity()).getUsuario().getId(), ((Material) materialSpinner.getSelectedItem()).getId(), qtdeSpinner.getSelectedItemPosition() + 1);
+
+                final Gson gson = new GsonBuilder().create();
+                JsonObject jsonObject = gson.toJsonTree(servicoMaterial, ServicoMaterial.class).getAsJsonObject();
+
                 Ion.with(getContext())
-                        .load("post", getResources().getString(R.string.url) + "task.equipament/")
+                        .load("delete", getResources().getString(R.string.url) + "task.material/")
                         .setHeader("Authorization", sharedPref.getToken())
+                        .setJsonObjectBody(jsonObject)
                         .asJsonObject()
                         .withResponse()
                         .setCallback(new FutureCallback<Response<JsonObject>>()
@@ -63,10 +70,10 @@ public class FragmentMaterial extends Fragment
                             @Override
                             public void onCompleted(Exception e, Response<JsonObject> result)
                             {
-                                if (result.getHeaders().code() == 200)
+                                if (result.getHeaders().code() == 204)
                                 {
                                     materialSpinner.setSelection(0);
-                                    Toast.makeText(getContext(), "Entrada de equipamento registrada", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), "Entrada de material registrada", Toast.LENGTH_SHORT).show();
                                 }
                                 else
                                 {
@@ -81,9 +88,14 @@ public class FragmentMaterial extends Fragment
             @Override
             public void onClick(View view)
             {
+                ServicoMaterial servicoMaterial = new ServicoMaterial(((MovimentoEstoque) getActivity()).getUsuario().getId(), ((Material) materialSpinner.getSelectedItem()).getId(), qtdeSpinner.getSelectedItemPosition() + 1);
+                final Gson gson = new GsonBuilder().create();
+                JsonObject jsonObject = gson.toJsonTree(servicoMaterial, ServicoMaterial.class).getAsJsonObject();
+
                 Ion.with(getContext())
-                        .load("delete", getResources().getString(R.string.url) + "task.equipament/")
+                        .load("post", getResources().getString(R.string.url) + "task.material/")
                         .setHeader("Authorization", sharedPref.getToken())
+                        .setJsonObjectBody(jsonObject)
                         .asJsonObject()
                         .withResponse()
                         .setCallback(new FutureCallback<Response<JsonObject>>()
@@ -91,10 +103,10 @@ public class FragmentMaterial extends Fragment
                             @Override
                             public void onCompleted(Exception e, Response<JsonObject> result)
                             {
-                                if (result.getHeaders().code() == 200)
+                                if (result.getHeaders().code() == 204)
                                 {
                                     materialSpinner.setSelection(0);
-                                    Toast.makeText(getContext(), "Saída de equipamento registrada", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), "Saída de material registrada", Toast.LENGTH_SHORT).show();
                                 }
                                 else
                                 {
@@ -129,6 +141,15 @@ public class FragmentMaterial extends Fragment
                                     android.R.layout.simple_spinner_item, materiais);
                             dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                             materialSpinner.setAdapter(dataAdapter);
+
+
+                            List<Integer> quantidades = new ArrayList<>();
+                            for (Integer i = 1; i <= 10; i++)
+                                quantidades.add(i);
+                            ArrayAdapter<Integer> quantidadeAdapter = new ArrayAdapter<>(getContext(),
+                                    android.R.layout.simple_spinner_item, quantidades);
+                            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            qtdeSpinner.setAdapter(quantidadeAdapter);
                         }
                         else
                         {

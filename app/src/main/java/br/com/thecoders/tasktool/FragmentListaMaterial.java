@@ -9,17 +9,21 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.koushikdutta.ion.Response;
 
+import org.joda.time.DateTime;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.thecoders.tasktool.Adapter.AdapterMaterialUtilizado;
+import br.com.thecoders.tasktool.Adapter.AdapterEstoque;
 import br.com.thecoders.tasktool.Classes.EstoqueHistorico;
+import br.com.thecoders.tasktool.Util.DeserializerData;
 import br.com.thecoders.tasktool.Util.SharedPref;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,8 +41,14 @@ public class FragmentListaMaterial extends Fragment
         View view = inflater.inflate(R.layout.fragment_listar, container, false);
         ButterKnife.bind(this, view);
         sharedPref = new SharedPref(getContext());
-        listarHistoricoStatus();
         return view;
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        listarHistoricoStatus();
     }
 
     public void listarHistoricoStatus()
@@ -56,10 +66,10 @@ public class FragmentListaMaterial extends Fragment
                     {
                         if (result.getHeaders().code() == 200)
                         {
-                            List<EstoqueHistorico> estoque = new Gson().fromJson(result.getResult().get("items").getAsJsonArray(), new TypeToken<ArrayList<EstoqueHistorico>>()
+                            List<EstoqueHistorico> estoque = new GsonBuilder().registerTypeAdapter(DateTime.class, new DeserializerData()).create().fromJson(result.getResult().get("items").getAsJsonArray(), new TypeToken<ArrayList<EstoqueHistorico>>()
                             {
                             }.getType());
-                            listaListView.setAdapter(new AdapterMaterialUtilizado(getContext(), estoque));
+                            listaListView.setAdapter(new AdapterEstoque(getContext(), estoque));
                         }
                         else
                         {

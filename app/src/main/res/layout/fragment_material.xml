@@ -9,7 +9,7 @@
         android:id="@+id/camposequipamento_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="30dp"
         android:baselineAligned="false"
         android:orientation="horizontal"
         android:weightSum="3">
@@ -21,22 +21,12 @@
             android:layout_marginBottom="10dp"
             android:layout_weight="2" />
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/quantidade_layout"
+        <Spinner
+            android:id="@+id/qtde_spinner"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <EditText
-                android:id="@+id/quantidade_edittext"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="@string/qtde"
-                android:inputType="number"
-                android:textAlignment="center" />
-
-        </android.support.design.widget.TextInputLayout>
+            android:layout_height="45dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1" />
 
     </LinearLayout>
 

@@ -54,10 +54,10 @@ public class AdapterEstoque extends BaseAdapter
         TextView material = view.findViewById(R.id.material_textview);
 
         EstoqueHistorico registroEstoque = estoque.get(i);
-        dataTextView.setText(registroEstoque.getRegistradoEmString());
-        usuarioTextView.setText(registroEstoque.getResponsavel().getNome());
-        quantidadeTextView.setText(String.valueOf(registroEstoque.getQuantidade()));
-        material.setText(registroEstoque.getMaterial().getDescricao());
+        dataTextView.setText(registroEstoque.getData().toString("dd/MM/yyyy HH:mm"));
+        usuarioTextView.setText(registroEstoque.getUsuario());
+        quantidadeTextView.setText(registroEstoque.getTipo() == 'S' ? String.format("-%d", registroEstoque.getQuantidade()) : String.format("+%d", registroEstoque.getQuantidade()));
+        material.setText(registroEstoque.getMaterial());
 
         return view;
     }

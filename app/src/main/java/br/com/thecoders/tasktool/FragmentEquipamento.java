@@ -1,6 +1,5 @@
 package br.com.thecoders.tasktool;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -52,11 +51,15 @@ public class FragmentEquipamento extends Fragment
             @Override
             public void onClick(View view)
             {
+                ServicoEquipamento servicoEquipamento = new ServicoEquipamento(((MovimentoEstoque) getActivity()).getUsuario().getId(), ((Equipamento) equipamentosSpinner.getSelectedItem()).getId());
 
+                final Gson gson = new GsonBuilder().create();
+                JsonObject jsonObject = gson.toJsonTree(servicoEquipamento, ServicoEquipamento.class).getAsJsonObject();
 
                 Ion.with(getContext())
-                        .load("post", getResources().getString(R.string.url) + "task.equipament/")
+                        .load("delete", getResources().getString(R.string.url) + "task.equipment/")
                         .setHeader("Authorization", sharedPref.getToken())
+                        .setJsonObjectBody(jsonObject)
                         .asJsonObject()
                         .withResponse()
                         .setCallback(new FutureCallback<Response<JsonObject>>()
@@ -64,7 +67,7 @@ public class FragmentEquipamento extends Fragment
                             @Override
                             public void onCompleted(Exception e, Response<JsonObject> result)
                             {
-                                if (result.getHeaders().code() == 200)
+                                if (result.getHeaders().code() == 204)
                                 {
                                     equipamentosSpinner.setSelection(0);
                                     Toast.makeText(getContext(), "Entrada de equipamento registrada", Toast.LENGTH_SHORT).show();
@@ -88,7 +91,7 @@ public class FragmentEquipamento extends Fragment
                 JsonObject jsonObject = gson.toJsonTree(servicoEquipamento, ServicoEquipamento.class).getAsJsonObject();
 
                 Ion.with(getContext())
-                        .load("delete", getResources().getString(R.string.url) + "task.equipment/")
+                        .load("post", getResources().getString(R.string.url) + "task.equipment/")
                         .setHeader("Authorization", sharedPref.getToken())
                         .setJsonObjectBody(jsonObject)
                         .asJsonObject()
@@ -98,7 +101,7 @@ public class FragmentEquipamento extends Fragment
                             @Override
                             public void onCompleted(Exception e, Response<JsonObject> result)
                             {
-                                if (result.getHeaders().code() == 200)
+                                if (result.getHeaders().code() == 204)
                                 {
                                     equipamentosSpinner.setSelection(0);
                                     Toast.makeText(getContext(), "Saída de equipamento registrada", Toast.LENGTH_SHORT).show();

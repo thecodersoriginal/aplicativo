@@ -9,7 +9,7 @@
         android:id="@+id/equipamentos_spinner"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="30dp" />
 
     <LinearLayout
         android:id="@+id/botoes_layout"

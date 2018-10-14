@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 
 import br.com.thecoders.tasktool.Adapter.PagerAdapterServico;
@@ -16,6 +18,8 @@ public class Estoque extends AppCompatActivity
 {
     private SharedPref sharedPref;
 
+    @BindView(R.id.toolbar)
+    public Toolbar toolbar;
     @BindView(R.id.tab_layout)
     public TabLayout tabLayout;
     @BindView(R.id.viewpager)
@@ -28,6 +32,9 @@ public class Estoque extends AppCompatActivity
         setContentView(R.layout.activity_estoque);
 
         ButterKnife.bind(this);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         sharedPref = new SharedPref(this);
 
         viewPager.setAdapter(new PagerAdapterServico(getSupportFragmentManager()));
@@ -37,5 +44,17 @@ public class Estoque extends AppCompatActivity
     public void movimentarEstoque(View v)
     {
         startActivity(new Intent(this, MovimentoEstoque.class));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return true;
     }
 }

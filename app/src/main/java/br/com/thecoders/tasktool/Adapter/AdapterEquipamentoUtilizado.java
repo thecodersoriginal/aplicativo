@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.List;
@@ -51,11 +52,13 @@ public class AdapterEquipamentoUtilizado extends BaseAdapter
             view = layoutInflater.inflate(R.layout.adapter_equipamentoutilizado, null);
 
         TextView equipamentoTextView = view.findViewById(R.id.equipamento_textview);
+        CheckBox emUsocCheckBox = view.findViewById(R.id.emuso_checkbox);
 
         Equipamento equipamento = equipamentos.get(i);
 
         //equipamentoTextView.setTextColor(equipamento.isEmUso() ? context.getColor(R.color.colorBad) : context.getColor(R.color.colorGood));
         equipamentoTextView.setText(equipamento.getDescricao());
+        emUsocCheckBox.setChecked(equipamento.isEmUso());
 
         return view;
     }
