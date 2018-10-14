@@ -18,7 +18,7 @@ public class SharedPref
 
         login = sharedPref.getString("Login", "");
         senha = sharedPref.getString("Senha", "");
-        senha = sharedPref.getString("Token", "");
+        token = sharedPref.getString("Token", "");
         id = sharedPref.getInt("Id", 0);
     }
 
@@ -27,7 +27,7 @@ public class SharedPref
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("Login", login);
         editor.putString("Senha", senha);
-        editor.putString("Token", token);
+        editor.putString("Token", "Bearer " + token);
         editor.putInt("Id", id);
         editor.apply();
     }

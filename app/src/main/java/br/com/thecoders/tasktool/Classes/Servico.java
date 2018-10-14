@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public class Servico implements Serializable
 {
-    @SerializedName("Id")
+    @SerializedName("id")
     private int id;
     @SerializedName("name")
     private String descricao;

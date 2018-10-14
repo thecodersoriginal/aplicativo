@@ -22,7 +22,7 @@
         <activity android:name=".Agenda" />
         <activity android:name=".MovimentoEstoque" />
         <activity
-            android:name=".Servico"
+            android:name=".ServicoFuncionario"
             android:windowSoftInputMode="stateHidden" />
         <activity android:name=".Estoque" />
         <activity android:name=".OrdemDeServico" />

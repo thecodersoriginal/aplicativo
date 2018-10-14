@@ -73,4 +73,10 @@ public class Equipamento
     {
         this.ativo = ativo;
     }
+
+    @Override
+    public String toString()
+    {
+        return descricao;
+    }
 }
