@@ -4,12 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 import org.joda.time.DateTime;
 
-import java.util.ArrayList;
-
 public class Servico
 {
-
-    @SerializedName("id")
+    @SerializedName("Id")
     private int id;
     @SerializedName("name")
     private String descricao;
@@ -19,105 +16,52 @@ public class Servico
     private DateTime iniciadoEm;
     @SerializedName("finishedAt")
     private DateTime finalizadoEm;
+    @SerializedName("interruptedIn")
+    private DateTime interrompidoEm;
     @SerializedName("senderId")
-    private int idOrigem;
-    @SerializedName("receiverId")
-    private String idDestino;
+    private int idSupervisor;
     @SerializedName("senderName")
-    private String NomeOrigem;
+    private String supervisor;
+    @SerializedName("receiverId")
+    private int IdFuncionario;
     @SerializedName("receiverName")
-    private String NomeDestino;
+    private String Funcionario;
     @SerializedName("repeatInDays")
-    private int dias;
-    @SerializedName("equipments")
-    private ArrayList<ServicoEquipamento> servicoEquipamento;
+    private int repeatInDays;
 
-    public Servico(int id, String descricao, DateTime agendadaPara, DateTime iniciadoEm, DateTime finalizadoEm, int idOrigem, String idDestino, String nomeOrigem, String nomeDestino, int dias, ArrayList<ServicoEquipamento> servicoEquipamento) {
+    public Servico(int id, String descricao, DateTime agendadaPara, DateTime iniciadoEm, DateTime finalizadoEm, DateTime interrompidoEm, int idSupervisor, String supervisor, int idFuncionario, String funcionario, int repeatInDays)
+    {
         this.id = id;
         this.descricao = descricao;
         this.agendadaPara = agendadaPara;
         this.iniciadoEm = iniciadoEm;
         this.finalizadoEm = finalizadoEm;
-        this.idOrigem = idOrigem;
-        this.idDestino = idDestino;
-        NomeOrigem = nomeOrigem;
-        NomeDestino = nomeDestino;
-        this.dias = dias;
-        this.servicoEquipamento = servicoEquipamento;
+        this.interrompidoEm = interrompidoEm;
+        this.idSupervisor = idSupervisor;
+        this.supervisor = supervisor;
+        IdFuncionario = idFuncionario;
+        Funcionario = funcionario;
+        this.repeatInDays = repeatInDays;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
-    public String getDescricao() {
+    public String getDescricao()
+    {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
+    public void setDescricao(String descricao)
+    {
         this.descricao = descricao;
-    }
-
-    public int getIdOrigem() {
-        return idOrigem;
-    }
-
-    public void setIdOrigem(int idOrigem) {
-        this.idOrigem = idOrigem;
-    }
-
-    public String getIdDestino() {
-        return idDestino;
-    }
-
-    public void setIdDestino(String idDestino) {
-        this.idDestino = idDestino;
-    }
-
-    public String getNomeOrigem() {
-        return NomeOrigem;
-    }
-
-    public void setNomeOrigem(String nomeOrigem) {
-        NomeOrigem = nomeOrigem;
-    }
-
-    public String getNomeDestino() {
-        return NomeDestino;
-    }
-
-    public void setNomeDestino(String nomeDestino) {
-        NomeDestino = nomeDestino;
-    }
-
-    public int getDias() {
-        return dias;
-    }
-
-    public void setDias(int dias) {
-        this.dias = dias;
-    }
-
-    public ArrayList<ServicoEquipamento> getServicoEquipamento() {
-        return servicoEquipamento;
-    }
-
-    public void setServicoEquipamento(ArrayList<ServicoEquipamento> servicoEquipamento) {
-        this.servicoEquipamento = servicoEquipamento;
-    }
-
-    public String getAgendadaParaString()
-    {
-        return agendadaPara.toString("HH:mm");
-    }
-
-    public String getIniciadoEmString()
-    {
-        return iniciadoEm.toString("dd/mm/yyyy");
     }
 
     public DateTime getAgendadaPara()
@@ -150,9 +94,63 @@ public class Servico
         this.finalizadoEm = finalizadoEm;
     }
 
-    public String getFinalizadoEmString()
+    public DateTime getInterrompidoEm()
     {
-        return finalizadoEm.toString("dd/mm/yyyy");
+        return interrompidoEm;
     }
 
+    public void setInterrompidoEm(DateTime interrompidoEm)
+    {
+        this.interrompidoEm = interrompidoEm;
+    }
+
+    public int getIdSupervisor()
+    {
+        return idSupervisor;
+    }
+
+    public void setIdSupervisor(int idSupervisor)
+    {
+        this.idSupervisor = idSupervisor;
+    }
+
+    public String getSupervisor()
+    {
+        return supervisor;
+    }
+
+    public void setSupervisor(String supervisor)
+    {
+        this.supervisor = supervisor;
+    }
+
+    public int getIdFuncionario()
+    {
+        return IdFuncionario;
+    }
+
+    public void setIdFuncionario(int idFuncionario)
+    {
+        IdFuncionario = idFuncionario;
+    }
+
+    public String getFuncionario()
+    {
+        return Funcionario;
+    }
+
+    public void setFuncionario(String funcionario)
+    {
+        Funcionario = funcionario;
+    }
+
+    public int getRepeatInDays()
+    {
+        return repeatInDays;
+    }
+
+    public void setRepeatInDays(int repeatInDays)
+    {
+        this.repeatInDays = repeatInDays;
+    }
 }
