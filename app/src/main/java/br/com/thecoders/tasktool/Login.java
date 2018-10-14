@@ -63,7 +63,7 @@ public class Login extends AppCompatActivity
             loadingProgressBar.setVisibility(View.VISIBLE);
 
             Ion.with(this)
-                    .load("http://192.168.0.88/TaskTop/api/auth.login/")
+                    .load(getResources().getString(R.string.url) + "auth.login/")
                     .setJsonObjectBody(jsonObject)
                     .asJsonObject()
                     .withResponse()
