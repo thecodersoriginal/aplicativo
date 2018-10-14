@@ -1,14 +1,22 @@
 package br.com.thecoders.tasktool.Classes;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Usuario
 {
+    @SerializedName("id")
     private int id;
+    @SerializedName("login")
     private String login;
+    @SerializedName("name")
     private String nome;
+    @SerializedName("phone")
     private String telefone;
+    @SerializedName("email")
     private String email;
     private String senha;
     private String chave;
+    @SerializedName("type")
     private String tipo;
 
     public Usuario(int id, String login, String nome, String telefone, String email, String senha, String chave, String tipo)
@@ -101,5 +109,11 @@ public class Usuario
     public void setTipo(String tipo)
     {
         this.tipo = tipo;
+    }
+
+    @Override
+    public String toString()
+    {
+        return nome;
     }
 }

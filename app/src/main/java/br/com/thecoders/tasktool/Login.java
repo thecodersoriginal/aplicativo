@@ -72,16 +72,15 @@ public class Login extends AppCompatActivity
                         @Override
                         public void onCompleted(Exception e, Response<JsonObject> result)
                         {
+                            loadingProgressBar.setVisibility(View.INVISIBLE);
                             if (result.getHeaders().code() == 200)
                             {
-
                                 RespostaLogin login = gson.fromJson(result.getResult(), RespostaLogin.class);
                                 sharedPref.setLogin(loginEditText.getText().toString());
                                 sharedPref.setSenha(salvarSenhaSwitch.isChecked() ? senhaEditText.getText().toString() : "");
+                                sharedPref.setToken(login.getTokenAcesso());
                                 sharedPref.setId(login.getUsuario().getId());
                                 sharedPref.salvar();
-
-                                loadingProgressBar.setVisibility(View.INVISIBLE);
 
                                 if (login.getUsuario().getTipo().equals("funcionario"))
                                     startActivity(new Intent(Login.this, Agenda.class));
@@ -94,7 +93,6 @@ public class Login extends AppCompatActivity
                             {
                                 Toast.makeText(Login.this, result.getResult().get("error").getAsJsonObject().get("message").getAsString(), Toast.LENGTH_SHORT).show();
                             }
-
                         }
                     });
         }

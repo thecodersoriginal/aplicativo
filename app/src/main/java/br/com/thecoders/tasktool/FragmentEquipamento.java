@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -22,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.thecoders.tasktool.Classes.Equipamento;
-import br.com.thecoders.tasktool.Classes.ServicoEquipamento;
 import br.com.thecoders.tasktool.Util.SharedPref;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,8 +36,6 @@ public class FragmentEquipamento extends Fragment
     public ImageButton saidaButton;
     @BindView(R.id.entrada_button)
     public ImageButton entradaButton;
-    @BindView(R.id.equipamentos_listview)
-    public ListView equipamentosListView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -48,7 +44,7 @@ public class FragmentEquipamento extends Fragment
         ButterKnife.bind(this, view);
         sharedPref = new SharedPref(getContext());
         listarEquipamentos();
-        saidaButton.setOnClickListener(new View.OnClickListener()
+        entradaButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
@@ -111,8 +107,9 @@ public class FragmentEquipamento extends Fragment
     public void listarEquipamentos()
     {
         Ion.with(getContext())
-                .load(getResources().getString(R.string.url) + "equipament.all/")
+                .load(getResources().getString(R.string.url) + "equipment.all/")
                 .setHeader("Authorization", sharedPref.getToken())
+                .setJsonObjectBody(new JsonObject())
                 .asJsonObject()
                 .withResponse()
                 .setCallback(new FutureCallback<Response<JsonObject>>()
@@ -122,7 +119,7 @@ public class FragmentEquipamento extends Fragment
                     {
                         if (result.getHeaders().code() == 200)
                         {
-                            equipamentos = new Gson().fromJson(result.getResult(), new TypeToken<ArrayList<Equipamento>>()
+                            equipamentos = new Gson().fromJson(result.getResult().get("items").getAsJsonArray(), new TypeToken<ArrayList<Equipamento>>()
                             {
                             }.getType());
                             ArrayAdapter<Equipamento> dataAdapter = new ArrayAdapter<Equipamento>(getContext(),

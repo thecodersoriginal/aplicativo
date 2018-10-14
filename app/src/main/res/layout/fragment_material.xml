@@ -15,7 +15,7 @@
         android:weightSum="3">
 
         <Spinner
-            android:id="@+id/equipamentos_spinner"
+            android:id="@+id/material_spinner"
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_marginBottom="10dp"

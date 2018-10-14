@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -20,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.thecoders.tasktool.Adapter.PagerAdapterEstoque;
-import br.com.thecoders.tasktool.Classes.Equipamento;
 import br.com.thecoders.tasktool.Classes.Servico;
 import br.com.thecoders.tasktool.Classes.Usuario;
 import br.com.thecoders.tasktool.Util.SharedPref;
@@ -33,16 +34,16 @@ public class MovimentoEstoque extends AppCompatActivity
     private List<Usuario> usuarios;
     private Servico servico;
 
-    @BindView(R.id.usuario_edittext)
-    public EditText usuarioEditText;
+    @BindView(R.id.toolbar)
+    public Toolbar toolbar;
+    @BindView(R.id.usuarios_spinner)
+    public Spinner usuariosSpinner;
     @BindView(R.id.servico_edittext)
     public EditText servicoEditText;
     @BindView(R.id.tab_layout)
     public TabLayout tabLayout;
     @BindView(R.id.viewpager)
     public ViewPager viewPager;
-    @BindView(R.id.usuarios_spinner)
-    public Spinner usuariosSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,6 +52,12 @@ public class MovimentoEstoque extends AppCompatActivity
         setContentView(R.layout.activity_movimento_estoque);
 
         ButterKnife.bind(this);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        sharedPref = new SharedPref(this);
+
+        servicoEditText.setKeyListener(null);
 
         viewPager.setAdapter(new PagerAdapterEstoque(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
@@ -63,6 +70,7 @@ public class MovimentoEstoque extends AppCompatActivity
         Ion.with(this)
                 .load(getResources().getString(R.string.url) + "user.all/")
                 .setHeader("Authorization", sharedPref.getToken())
+                .setJsonObjectBody(new JsonObject())
                 .asJsonObject()
                 .withResponse()
                 .setCallback(new FutureCallback<Response<JsonObject>>()
@@ -72,7 +80,7 @@ public class MovimentoEstoque extends AppCompatActivity
                     {
                         if (result.getHeaders().code() == 200)
                         {
-                            usuarios = new Gson().fromJson(result.getResult(), new TypeToken<ArrayList<Equipamento>>()
+                            usuarios = new Gson().fromJson(result.getResult().get("items").getAsJsonArray(), new TypeToken<ArrayList<Usuario>>()
                             {
                             }.getType());
                             ArrayAdapter<Usuario> dataAdapter = new ArrayAdapter<Usuario>(MovimentoEstoque.this,
@@ -86,5 +94,17 @@ public class MovimentoEstoque extends AppCompatActivity
                         }
                     }
                 });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return true;
     }
 }

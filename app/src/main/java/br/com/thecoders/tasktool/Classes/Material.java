@@ -1,10 +1,14 @@
 package br.com.thecoders.tasktool.Classes;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Material
 {
-
+    @SerializedName("id")
     private int id;
+    @SerializedName("description")
     private String descricao;
+    @SerializedName("actualQuantity")
     private int quantidadeAtual;
 
     public Material(int id, String descricao, int quantidadeAtual)
@@ -42,5 +46,11 @@ public class Material
     public void setQuantidadeAtual(int quantidadeAtual)
     {
         this.quantidadeAtual = quantidadeAtual;
+    }
+
+    @Override
+    public String toString()
+    {
+        return descricao;
     }
 }
